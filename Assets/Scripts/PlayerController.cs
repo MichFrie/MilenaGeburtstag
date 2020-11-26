@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
     Animator animator;
+
+    LeadDanceController leadDanceController;
+
     public bool isMoving = false;
     public float turnSpeed = 50f;
 
@@ -15,19 +18,21 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        leadDanceController = GetComponent<LeadDanceController>();
     }
 
     void Update()
     {
         Movement();
+        selectNPC();
 
     }
 
-    private void Movement()
+    void Movement()
     {
 
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
         if (x != 0 || z != 0)
         {
@@ -56,5 +61,22 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
         }
 
+    }
+
+    void selectNPC()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit))
+            {
+                if(hit.collider.gameObject.CompareTag("NPC1"))
+                {
+                    Debug.Log("Test");
+                    FindObjectOfType<AudioManager>().PlayAudio("MainTheme");
+                }
+            }
+        }
     }
 }

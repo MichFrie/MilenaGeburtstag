@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DanceGroupController : MonoBehaviour
 {
     Animator animator;
-    public GameObject player;
+   
     bool stopDancing = true;
 
     void Start()
@@ -15,9 +16,10 @@ public class DanceGroupController : MonoBehaviour
 
     void Update()
     {
-        DanceSequence();
+        //DanceSequence();
     }
 
+   
     void DanceSequence()
     {
         if (Input.GetKeyDown(KeyCode.F) && stopDancing)
@@ -27,7 +29,7 @@ public class DanceGroupController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            animator.SetTrigger("ymca");
+            animator.SetTrigger("macarena");
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GypsyDanceController : MonoBehaviour
+public class BairdController : MonoBehaviour
 {
     Animator animator;
     DialogueTrigger dialogueTrigger;
@@ -14,15 +14,13 @@ public class GypsyDanceController : MonoBehaviour
         dialogueTrigger = GetComponent<DialogueTrigger>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Vector3.Distance(transform.position, player.transform.position) < 10 && withinGreetingDistance)
         {
-            animator.SetBool("snakeDance", true);
+            animator.SetBool("playGuitar", true);
             withinGreetingDistance = false;
             dialogueTrigger.TriggerDialogue();
         }
     }
 }
-

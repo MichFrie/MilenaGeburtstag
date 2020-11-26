@@ -7,14 +7,21 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     private Queue<string> sentences;
+    public Text dialogueText;
+
+    public Animator animator;
+
     void Start()
     {
+
         sentences = new Queue<string>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("Starting new conversation with " + dialogue.NPC_name);
+        animator.SetBool("isOpen", true);
+        
+       
         sentences.Clear();
         foreach(string sentence in dialogue.sentences)
         {
@@ -31,11 +38,28 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
 
     void EndDialogue()
     {
+        animator.SetBool("isOpen", false);
         Debug.Log("End of conversation");
+    }
+
+    public void StartDanceGameDialogue(Dialogue dialogue)
+    {
+
     }
 }
