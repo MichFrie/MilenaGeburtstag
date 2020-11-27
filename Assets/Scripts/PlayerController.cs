@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
                 if(hit.collider.gameObject.CompareTag("NPC1"))
                 {
                     Debug.Log("Test");
-                    FindObjectOfType<AudioManager>().PlayAudio("MainTheme");
+                    //FindObjectOfType<AudioManager>().PlayAudio("MainTheme");
                 }
             }
         }

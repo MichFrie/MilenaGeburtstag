@@ -16,7 +16,7 @@ public class DanceGroupController : MonoBehaviour
 
     void Update()
     {
-        //DanceSequence();
+        DanceSequence();
     }
 
    
