@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
-        selectNPC();
-
+        //FindObjectOfType<AudioManager>().PlayAudio("MainTheme");
     }
 
     void Movement()
@@ -63,20 +62,4 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void selectNPC()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit))
-            {
-                if(hit.collider.gameObject.CompareTag("NPC1"))
-                {
-                    Debug.Log("Test");
-                    //FindObjectOfType<AudioManager>().PlayAudio("MainTheme");
-                }
-            }
-        }
-    }
 }

@@ -11,8 +11,8 @@ public class DialogueTrigger : MonoBehaviour
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 
-    //public void TriggerDanceGameDialogue()
-    //{
-    //    FindObjectOfType<DialogueManager>().StartDanceGameDialogue(dialogue);
-    //}
+    public void TriggerDanceGameDialogue()
+    {
+        FindObjectOfType<DialogueManager>().StartDanceGameDialogue(dialogue);
+    }
 }

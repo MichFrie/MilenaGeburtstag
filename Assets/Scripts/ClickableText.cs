@@ -6,27 +6,39 @@ using UnityEngine.EventSystems;
 
 public class ClickableText : MonoBehaviour, IPointerClickHandler
 {
-    TextMeshProUGUI text;
+    public static ClickableText instance;
+    
+    TextMeshProUGUI answerBoxTtext;
+    public int linkIndex = 7;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
+       answerBoxTtext  = GetComponent<TextMeshProUGUI>();
+   
     }
 
-    void Update()
-    {
-
-    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            int linkIndex = TMP_TextUtilities.FindIntersectingLink(text, Input.mousePosition, null);
+            linkIndex = TMP_TextUtilities.FindIntersectingLink(answerBoxTtext, Input.mousePosition, null);
             if(linkIndex > -1)
             {
-                var linkInfo = text.textInfo.linkInfo[linkIndex];
+                var linkInfo = answerBoxTtext.textInfo.linkInfo[linkIndex];
                 var linkId = linkInfo.GetLinkID();
-                
                 Debug.Log(linkIndex);
             } 
         }

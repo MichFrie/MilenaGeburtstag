@@ -10,11 +10,13 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
 
     public Animator animator;
+    public Animator gameAnimator;
 
     void Start()
     {
 
         sentences = new Queue<string>();
+        animator.SetBool("gameCanvas", false);
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -60,6 +62,13 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDanceGameDialogue(Dialogue dialogue)
     {
+        gameAnimator.SetBool("gameCanvas", true);
+        
+    }
 
+    void GameMechanic()
+    {
+        //GameObject.FindGameObjectWithTag("AnswerBox1").GetComponent<TextMeshProUGUI>().text = "";
+        //GameObject.FindGameObjectWithTag("AnswerBox2").SetActive(true);
     }
 }

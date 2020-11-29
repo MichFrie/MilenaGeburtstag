@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DanceGroupController : MonoBehaviour
 {
     Animator animator;
-   
-    bool stopDancing = true;
+    int count = 1;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -19,17 +16,16 @@ public class DanceGroupController : MonoBehaviour
         DanceSequence();
     }
 
-   
-    void DanceSequence()
+
+    public void DanceSequence()
     {
-        if (Input.GetKeyDown(KeyCode.F) && stopDancing)
+        if (FindObjectOfType<ClickableText>().linkIndex == 0)
         {
-            animator.SetTrigger("gangnamStyle");
-            stopDancing = false;
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            animator.SetTrigger("macarena");
+            switch (count)
+            {
+                case 1: animator.SetBool("gangnamStyle", true); count++; break;
+                case 2: animator.SetTrigger("ymca"); count++; break;
+            }
         }
     }
 }
