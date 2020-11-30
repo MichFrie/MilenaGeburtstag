@@ -18,7 +18,7 @@ public class LeadDanceController : MonoBehaviour
     void Update()
     {
         InitialGreeting();
-        GameDialog();
+        //GameDialog();
     }
 
     void InitialGreeting()
@@ -40,8 +40,7 @@ public class LeadDanceController : MonoBehaviour
             {
                 if (hit.collider.tag == "NPC1")
                 {
-                    Debug.Log("zweiter Teil beginnt");
-                    dialogueTrigger.TriggerDanceGameDialogue();
+                    //dialogueTrigger.TriggerDanceGameDialogue();
                 }
             }
         }      

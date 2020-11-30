@@ -39,7 +39,6 @@ public class ClickableText : MonoBehaviour, IPointerClickHandler
             {
                 var linkInfo = answerBoxTtext.textInfo.linkInfo[linkIndex];
                 var linkId = linkInfo.GetLinkID();
-                Debug.Log(linkIndex);
             } 
         }
     }

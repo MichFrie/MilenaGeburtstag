@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //FindObjectOfType<AudioManager>().PlayAudio("MainTheme");
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         leadDanceController = GetComponent<LeadDanceController>();
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
-        //FindObjectOfType<AudioManager>().PlayAudio("MainTheme");
+        
     }
 
     void Movement()

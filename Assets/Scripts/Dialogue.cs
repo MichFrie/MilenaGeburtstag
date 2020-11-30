@@ -7,6 +7,6 @@ public class Dialogue
 {
     public string NPC_name;
 
-    [TextArea(3,10)]
+    [TextArea(3,15)]
     public string[] sentences;
 }

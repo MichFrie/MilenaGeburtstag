@@ -8,6 +8,7 @@ public class KingController : MonoBehaviour
     DialogueTrigger dialogueTrigger;
     public GameObject player;
     bool withinGreetingDistance = true;
+    public static bool initiateEndScreen;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class KingController : MonoBehaviour
             animator.SetTrigger("wavingTrigger");
             dialogueTrigger.TriggerDialogue();
             withinGreetingDistance = false;
-
+            initiateEndScreen = true;
         }
     }
 }
